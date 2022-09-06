@@ -1,0 +1,61 @@
+{
+  "name": "create-somod",
+  "version": "0.0.0",
+  "description": "SOMOD Project creator",
+  "keywords": [
+    "somod",
+    "serverless-optimized-modules",
+    "reuse serverless",
+    "sodaru",
+    "developer",
+    "dev"
+  ],
+  "author": "Raghavendra K R <raghavendra@sodaru.com>",
+  "homepage": "https://github.com/sodaru/create-somod#readme",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "bin": {
+    "create-somod": "./bin/create-somod.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    ".create-somod.js",
+    "template"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sodaru/create-somod.git"
+  },
+  "scripts": {
+    "clean": "npx rimraf dist",
+    "prettier": "npx prettier --check --ignore-unknown ./**/*",
+    "eslint": "npx eslint ./ --no-error-on-unmatched-pattern",
+    "bundle": "npx esbuild src/index.ts --bundle --outdir=dist --platform=node --minify",
+    "emit-types": "npx tsc",
+    "build": "npm run prettier && npm run eslint && npm run clean && npm run bundle && npm run emit-types",
+    "pretest": "npm run build",
+    "test": "echo 'No Tests'",
+    "prepack": "npm run test",
+    "postversion": "git push --follow-tags"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.172",
+    "@types/node": "^16.4.13",
+    "esbuild": "^0.12.18",
+    "eslint-config-sodaru": "^1.0.0",
+    "lodash": "^4.17.21",
+    "nodejs-cli-runner": "^1.1.1",
+    "nodejs-file-utils": "^1.0.1",
+    "prettier-config-sodaru": "^1.0.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-sodaru"
+    ]
+  },
+  "prettier": "prettier-config-sodaru"
+}

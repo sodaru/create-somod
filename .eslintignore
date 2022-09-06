@@ -1,0 +1,15 @@
+node_modules
+dist
+
+template/build
+template/parameters.json
+template/.next
+template/tsconfig.json
+template/pages
+template/public
+template/next-env.d.ts
+template/.env
+template/next.config.js
+template/.aws-sam
+template/samconfig.toml
+template//template.yaml
