@@ -13,6 +13,7 @@ import {
 } from "nodejs-cli-runner";
 import { join } from "path";
 import { Config, GetConfig } from "./config";
+import { dependenciesInit } from "./tasks/dependenciesInit";
 import { eslintInit } from "./tasks/eslintInit";
 import { filesInit } from "./tasks/filesInit";
 import { gitInit } from "./tasks/gitInit";
@@ -154,6 +155,15 @@ export const CreateSomodAction = async (
   } else if (verbose) {
     logWarning("Skipped Sample files");
   }
+
+  await taskRunner(
+    `Initialize dependencies`,
+    dependenciesInit,
+    verbose,
+    targetDir,
+    verbose,
+    config.dependencies || {}
+  );
 
   if (typeof config.postInit == "function") {
     await taskRunner(
