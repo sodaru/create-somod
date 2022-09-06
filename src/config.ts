@@ -16,6 +16,11 @@ export type Config = {
     include?: string[];
     exclude?: string[];
   };
+  dependencies?: {
+    dep?: string[];
+    dev?: string[];
+    peer?: string[];
+  };
   postInit?: (dir: string, verbose: boolean) => Promise<void>;
 };
 

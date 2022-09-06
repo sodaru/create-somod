@@ -2,7 +2,6 @@ node_modules
 /build
 /parameters.json
 .next
-tsconfig.json
 /pages
 /public
 next-env.d.ts

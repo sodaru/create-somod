@@ -3,8 +3,11 @@
 const { join } = require("path");
 const { readFile } = require("fs/promises");
 
-async function loadFile(files, file) {
-  files[file] = await readFile(join(__dirname, "template", file), "utf8");
+async function loadFile(files, file, binary = false) {
+  files[file] = await readFile(
+    join(__dirname, "template", file),
+    binary ? undefined : "utf8"
+  );
 }
 
 /**
@@ -48,7 +51,7 @@ module.exports = async mode => {
 
     await loadFile(files, "ui/pages/_document.tsx");
     await loadFile(files, "ui/pages/index.tsx");
-    await loadFile(files, "ui/public/favicon.ico");
+    await loadFile(files, "ui/public/favicon.ico", true);
     await loadFile(files, "ui/config.yaml");
     await loadFile(files, "parameters.yaml");
     await loadFile(files, "tsconfig.json");
@@ -73,6 +76,9 @@ module.exports = async mode => {
       include: defaultInclude,
       exclude: defaultExclude
     },
-    files
+    files,
+    dependencies: {
+      dev: ["@types/node"]
+    }
   };
 };

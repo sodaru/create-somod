@@ -29,7 +29,6 @@
     "url": "git+ssh://git@github.com/sodaru/create-somod.git"
   },
   "scripts": {
-    "postinstall": "cd template && npm i",
     "clean": "npx rimraf dist",
     "prettier": "npx prettier --check --ignore-unknown ./**/*",
     "eslint": "npx eslint ./ --no-error-on-unmatched-pattern",
